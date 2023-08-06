@@ -23,4 +23,6 @@ jobs:
           context: DockerFiles/
           push: true
           tags: aalok013/stable_diffusion_runpod:latest
-          progress: plain
+          build-args: |
+            HTTP_PROXY=${{ secrets.HTTP_PROXY }}
+            HTTPS_PROXY=${{ secrets.HTTPS_PROXY }}
