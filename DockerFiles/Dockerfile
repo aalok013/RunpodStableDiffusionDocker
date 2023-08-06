@@ -44,8 +44,8 @@ RUN git clone https://github.com/aalok013/stable-diffusion-webui.git
 
 RUN mv /workspace/install-automatic.py /workspace/stable-diffusion-webui/
 
-#RUN mv /workspace/requirements.txt ./requirements.txt
-#RUN mv /workspace/requirements_versions.txt ./requirements_versions.txt
+RUN mv /workspace/requirements.txt ./requirements.txt
+RUN mv /workspace/requirements_versions.txt ./requirements_versions.txt
 
 RUN python -m install-automatic --skip-torch-cuda-test
 
