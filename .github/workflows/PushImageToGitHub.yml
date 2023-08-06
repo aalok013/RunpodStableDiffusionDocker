@@ -7,19 +7,36 @@ jobs:
   push_to_registry:
     name: Push Docker image to Docker Hub
     runs-on: ubuntu-latest
+    env:
+      ACTIONS_RUNNER_DEBUG: true # Enable debug mode
+
     steps:
       - name: Check out the repo
         uses: actions/checkout@v2
-      
+
+      - name: Debug Environment
+        run: |
+          echo "GitHub Actions Debug Mode Enabled"
+          env | sort
+        if: always() # This step runs even if the job fails
+
       - name: Login to Docker Hub
         uses: docker/login-action@v2
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
-    
-      - name: Build and push Docker image
-        uses: docker/build-push-action@v4
-        with:
-          context: DockerFiles/
-          push: true
-          tags: aalok013/stable_diffusion_runpod:latest
+
+      - name: Build Docker image
+        run: docker build -t aalok013/stable_diffusion_runpod:latest DockerFiles/
+
+      - name: Start Interactive Debug Shell
+        run: |
+          docker run -it --rm \
+            -v $PWD:/workspace \
+            -w /workspace \
+            aalok013/stable_diffusion_runpod:latest \
+            /bin/bash
+        if: always() # This step runs even if the job fails
+
+      - name: Push Docker image
+        run: docker push aalok013/stable_diffusion_runpod:latest
