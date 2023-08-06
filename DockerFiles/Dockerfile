@@ -40,11 +40,14 @@ RUN python -m venv /workspace/venv && \
     export PATH="/workspace/venv/bin:$PATH" && \
     pip install -U --no-cache-dir jupyterlab jupyterlab_widgets ipykernel ipywidgets
 
-RUN git clone https://github.com/aalok013/stable-diffusion-webui.git && \
-    mv /workspace/install-automatic.py /workspace/stable-diffusion-webui/ && \
-    mv /workspace/requirements.txt ./requirements.txt && \
-    mv /workspace/requirements_versions.txt ./requirements_versions.txt && \
-    python -m install-automatic --skip-torch-cuda-test
+RUN git clone https://github.com/aalok013/stable-diffusion-webui.git
+
+RUN mv /workspace/install-automatic.py /workspace/stable-diffusion-webui/
+RUN mv /workspace/requirements.txt ./requirements.txt
+RUN mv /workspace/requirements_versions.txt ./requirements_versions.txt
+
+RUN python -m install-automatic --skip-torch-cuda-test
+
 
 RUN cd /workspace/stable-diffusion-webui && \
     git clone https://github.com/deforum-art/sd-webui-deforum extensions/deforum && \
