@@ -47,7 +47,7 @@ RUN mv /workspace/install-automatic.py /workspace/stable-diffusion-webui/
 #RUN mv /workspace/requirements.txt ./requirements.txt
 #RUN mv /workspace/requirements_versions.txt ./requirements_versions.txt
 
-RUN python ./install-automatic.py --skip-torch-cuda-test
+RUN python stable-diffusion-webui/install-automatic.py --skip-torch-cuda-test
 
 
 RUN cd /workspace/stable-diffusion-webui && \
