@@ -1,0 +1,41 @@
+# Machine Learning Libraries
+accelerate
+basicsr
+einops
+gfpgan
+jsonmerge
+kornia
+numpy
+open-clip-torch
+pytorch_lightning==1.7.7
+realesrgan
+torch
+torchdiffeq
+torchsde
+timm==0.4.12
+transformers==4.29.2
+xformers
+
+# Image Processing Libraries
+blendmodes
+opencv-contrib-python
+Pillow
+piexif
+scikit-image>=0.19
+
+# Web Development Libraries
+gradio==3.32.0
+requests
+
+# Utility Libraries
+astunparse
+clean-fid
+GitPython
+inflection
+lark
+omegaconf
+psutil
+resize-right
+rich
+safetensors
+tomesd
