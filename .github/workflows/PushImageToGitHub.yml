@@ -18,7 +18,9 @@ jobs:
           password: ${{ secrets.DOCKERHUB_TOKEN }}
     
       - name: Build and push Docker image
-        run: docker build -t aalok013/stable_diffusion_runpod:latest --progress=plain .
-      
-      - name: Push Docker image
-        run: docker push aalok013/stable_diffusion_runpod:latest
+        uses: docker/build-push-action@v4
+        with:
+          context: DockerFiles/
+          push: true
+          tags: aalok013/stable_diffusion_runpod:latest
+          progress: plain
