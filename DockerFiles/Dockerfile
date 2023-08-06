@@ -22,53 +22,65 @@ COPY cache-sd-model.py install-automatic.py ./
 RUN apt update --yes && \
     apt upgrade --yes && \
     apt install --yes --no-install-recommends \
-    git openssh-server libglib2.0-0 libsm6 libgl1 libxrender1 libxext6 ffmpeg wget curl psmisc rsync vim nginx \
-    pkg-config libffi-dev libcairo2 libcairo2-dev libgoogle-perftools4 libtcmalloc-minimal4 apt-transport-https \
-    software-properties-common ca-certificates && \
-    update-ca-certificates && \
+        git openssh-server libglib2.0-0 libsm6 libgl1 libxrender1 libxext6 ffmpeg wget curl psmisc rsync vim nginx \
+        pkg-config libffi-dev libcairo2 libcairo2-dev libgoogle-perftools4 libtcmalloc-minimal4 apt-transport-https \
+        software-properties-common ca-certificates
+
+RUN update-ca-certificates && \
     add-apt-repository ppa:deadsnakes/ppa && \
     apt install python3.10-dev python3.10-venv -y --no-install-recommends && \
     ln -s /usr/bin/python3.10 /usr/bin/python && \
     rm /usr/bin/python3 && \
     ln -s /usr/bin/python3.10 /usr/bin/python3 && \
-    curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py && \python get-pip.py && \
-    pip install -U --no-cache-dir pip && \
-    python -m venv /workspace/venv && \
+    curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py && \
+    python get-pip.py && \
+    pip install -U --no-cache-dir pip
+
+RUN python -m venv /workspace/venv && \
     export PATH="/workspace/venv/bin:$PATH" && \
-    pip install -U --no-cache-dir jupyterlab jupyterlab_widgets ipykernel ipywidgets && \
-    git clone https://github.com/aalok013/stable-diffusion-webui.git && \
+    pip install -U --no-cache-dir jupyterlab jupyterlab_widgets ipykernel ipywidgets
+
+RUN git clone https://github.com/aalok013/stable-diffusion-webui.git && \
     mv /workspace/install-automatic.py /workspace/stable-diffusion-webui/ && \
     mv /workspace/requirements.txt ./requirements.txt && \
     mv /workspace/requirements_versions.txt ./requirements_versions.txt && \
-    python -m install-automatic --skip-torch-cuda-test && \
-    cd /workspace/stable-diffusion-webui && \
+    python -m install-automatic --skip-torch-cuda-test
+
+RUN cd /workspace/stable-diffusion-webui && \
     git clone https://github.com/deforum-art/sd-webui-deforum extensions/deforum && \
     cd extensions/deforum && \
-    pip install -r requirements.txt && \
-    cd /workspace/stable-diffusion-webui && \
+    pip install -r requirements.txt
+
+RUN cd /workspace/stable-diffusion-webui && \
     git clone https://github.com/Mikubill/sd-webui-controlnet.git extensions/sd-webui-controlnet && \
     cd extensions/sd-webui-controlnet && \
-    pip install -r requirements.txt && \
+    pip install -r requirements.txt
+
+RUN cd /workspace/stable-diffusion-webui && \
     git clone https://github.com/thomasasfk/sd-webui-aspect-ratio-helper.git extensions/sd-webui-aspect-ratio-helper && \
     cd extensions/sd-webui-aspect-ratio-helper && \
-    pip install -r requirements.txt && \
+    pip install -r requirements.txt
+
+RUN cd /workspace/stable-diffusion-webui && \
     git clone https://github.com/DominikDoom/a1111-sd-webui-tagcomplete.git extensions/a1111-sd-webui-tagcomplete.git && \
     cd extensions/a1111-sd-webui-tagcomplete.git && \
-    pip install -r requirements.txt && \
-    #cd /workspace/stable-diffusion-webui && \
-    #git clone https://github.com/d8ahazard/sd_dreambooth_extension.git extensions/sd_dreambooth_extension && \
-    #cd extensions/sd_dreambooth_extension && \
-    #git checkout dev && \
-    #  git reset ${DREAMBOOTH_VERSION} --hard && \
-    #  mv /requirements_dreambooth.txt ./requirements.txt && pip install -r requirements.txt && \
-    cd /workspace/stable-diffusion-webui/ && \
+    pip install -r requirements.txt
+
+# Uncomment and customize the following lines as needed
+# RUN cd /workspace/stable-diffusion-webui && \
+#     git clone https://github.com/d8ahazard/sd_dreambooth_extension.git extensions/sd_dreambooth_extension && \
+#     cd extensions/sd_dreambooth_extension && \
+#     git checkout dev && \
+#     git reset ${DREAMBOOTH_VERSION} --hard && \
+#     mv /requirements_dreambooth.txt ./requirements.txt && pip install -r requirements.txt
+
+RUN cd /workspace/stable-diffusion-webui && \
     mv /workspace/cache-sd-model.py /workspace/stable-diffusion-webui/ && \
     python cache-sd-model.py --use-cpu=all --ckpt /sd-models/SDv1-5.ckpt && \
     pip cache purge && \
     apt clean && \
     mv /workspace/venv /venv && \
     mv /workspace/stable-diffusion-webui /stable-diffusion-webui
-
 
 # Cache Models
 RUN mkdir /sd-models && mkdir /cn-models && \
