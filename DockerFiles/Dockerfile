@@ -62,13 +62,11 @@ RUN cd /workspace/stable-diffusion-webui && \
 
 RUN cd /workspace/stable-diffusion-webui && \
     git clone https://github.com/thomasasfk/sd-webui-aspect-ratio-helper.git extensions/sd-webui-aspect-ratio-helper && \
-    cd extensions/sd-webui-aspect-ratio-helper && \
-    pip install -r requirements.txt
+    cd extensions/sd-webui-aspect-ratio-helper
 
 RUN cd /workspace/stable-diffusion-webui && \
     git clone https://github.com/DominikDoom/a1111-sd-webui-tagcomplete.git extensions/a1111-sd-webui-tagcomplete.git && \
-    cd extensions/a1111-sd-webui-tagcomplete.git && \
-    pip install -r requirements.txt
+    cd extensions/a1111-sd-webui-tagcomplete.git
 
 # Uncomment and customize the following lines as needed
 # RUN cd /workspace/stable-diffusion-webui && \
