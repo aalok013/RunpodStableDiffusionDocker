@@ -49,17 +49,12 @@ RUN apt update --yes && \
     git clone https://github.com/Mikubill/sd-webui-controlnet.git extensions/sd-webui-controlnet && \
     cd extensions/sd-webui-controlnet && \
     pip install -r requirements.txt && \
-
     git clone https://github.com/thomasasfk/sd-webui-aspect-ratio-helper.git extensions/sd-webui-aspect-ratio-helper && \
     cd extensions/sd-webui-aspect-ratio-helper && \
     pip install -r requirements.txt && \
-
     git clone https://github.com/DominikDoom/a1111-sd-webui-tagcomplete.git extensions/a1111-sd-webui-tagcomplete.git && \
     cd extensions/a1111-sd-webui-tagcomplete.git && \
     pip install -r requirements.txt && \
-    
-
-
     #cd /workspace/stable-diffusion-webui && \
     #git clone https://github.com/d8ahazard/sd_dreambooth_extension.git extensions/sd_dreambooth_extension && \
     #cd extensions/sd_dreambooth_extension && \
