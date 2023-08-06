@@ -82,8 +82,8 @@ COPY pre_start.sh /pre_start.sh
 COPY relauncher.py webui-user.sh /stable-diffusion-webui/
 
 # NGINX Proxy
-COPY --from=proxy nginx.conf /etc/nginx/nginx.conf
-COPY --from=proxy readme.html /usr/share/nginx/html/readme.html
+COPY nginx.conf /etc/nginx/nginx.conf
+COPY readme.html /usr/share/nginx/html/readme.html
 
 # Copy the README.md
 COPY README.md /usr/share/nginx/html/README.md
