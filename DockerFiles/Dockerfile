@@ -113,4 +113,4 @@ COPY model-download.sh /model-download.sh
 RUN chmod +x /model-download.sh
 
 SHELL ["/bin/bash", "--login", "-c"]
-ENTRYPOINT [ "/bin/bash", "-c", "/model-download.sh && /start.sh" ]
+CMD [ "/start.sh" ]
