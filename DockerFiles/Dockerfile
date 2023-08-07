@@ -85,8 +85,8 @@ RUN cd /workspace/stable-diffusion-webui && \
     mv /workspace/stable-diffusion-webui /stable-diffusion-webui
 
 # Cache Models
-RUN mkdir /sd-models && mkdir /cn-models && \
-    wget https://huggingface.co/runwayml/stable-diffusion-v1-5/resolve/main/v1-5-pruned.ckpt -O /sd-models/v1-5-pruned.ckpt 
+#RUN mkdir /sd-models && mkdir /cn-models && \
+    #wget https://huggingface.co/runwayml/stable-diffusion-v1-5/resolve/main/v1-5-pruned.ckpt -O /sd-models/v1-5-pruned.ckpt 
     #&& \
     #wget https://huggingface.co/stabilityai/stable-diffusion-xl-base-1.0/resolve/main/sd_xl_base_1.0.safetensors -O /sd-models/sd_xl_base_1.0.safetensors && \
     #wget https://huggingface.co/stabilityai/stable-diffusion-xl-refiner-1.0/resolve/main/sd_xl_refiner_1.0.safetensors -O /sd-models/sd_xl_refiner_1.0.safetensors && \
