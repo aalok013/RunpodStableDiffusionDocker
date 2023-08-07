@@ -76,13 +76,13 @@ RUN cd /workspace/stable-diffusion-webui && \
 #     git reset ${DREAMBOOTH_VERSION} --hard && \
 #     mv /requirements_dreambooth.txt ./requirements.txt && pip install -r requirements.txt
 
-RUN cd /workspace/stable-diffusion-webui && \
-    mv /workspace/cache-sd-model.py /workspace/stable-diffusion-webui/ && \
-    python cache-sd-model.py --use-cpu=all --ckpt /sd-models/SDv1-5.ckpt && \
-    pip cache purge && \
-    apt clean && \
-    mv /workspace/venv /venv && \
-    mv /workspace/stable-diffusion-webui /stable-diffusion-webui
+#RUN cd /workspace/stable-diffusion-webui && \
+#    mv /workspace/cache-sd-model.py /workspace/stable-diffusion-webui/ && \
+#   python cache-sd-model.py --use-cpu=all --ckpt /sd-models/SDv1-5.ckpt && \
+#   pip cache purge && \
+#   apt clean && \
+#   mv /workspace/venv /venv && \
+#   mv /workspace/stable-diffusion-webui /stable-diffusion-webui
 
 # Cache Models
 #RUN mkdir /sd-models && mkdir /cn-models && \
