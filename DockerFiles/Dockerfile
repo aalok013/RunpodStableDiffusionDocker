@@ -91,7 +91,7 @@ RUN cd /workspace/stable-diffusion-webui && \
     #wget https://huggingface.co/stabilityai/stable-diffusion-xl-base-1.0/resolve/main/sd_xl_base_1.0.safetensors -O /sd-models/sd_xl_base_1.0.safetensors && \
     #wget https://huggingface.co/stabilityai/stable-diffusion-xl-refiner-1.0/resolve/main/sd_xl_refiner_1.0.safetensors -O /sd-models/sd_xl_refiner_1.0.safetensors && \
     #wget https://huggingface.co/lllyasviel/ControlNet-v1-1/resolve/main/control_v11p_sd15_canny.pth -O /cn-models/control_v11p_sd15_canny.pth
-
+RUN wget -O /workspace/stable-diffusion-webui/models/Stable-diffusion/Deliberate.safetensors https://civitai.com/api/download/models/15236
 
 COPY pre_start.sh /pre_start.sh
 COPY relauncher.py webui-user.sh /stable-diffusion-webui/
