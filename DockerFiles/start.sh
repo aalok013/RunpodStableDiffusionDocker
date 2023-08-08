@@ -1,6 +1,7 @@
 #!/bin/bash
-. /workspace/model-download.sh
-
+echo "Calling model-download.sh"
+/workspace/model-download.sh
+echo "Successfully run scripts in model-download.sh"
 set -e  # Exit the script if any statement returns a non-true return value
 
 # ---------------------------------------------------------------------------- #
