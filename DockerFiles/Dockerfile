@@ -109,7 +109,9 @@ COPY start.sh /start.sh
 RUN chmod +x /start.sh && chmod +x /pre_start.sh
 
 # Start Custom Scripts
-COPY /workspace/stable-diffusion-webui/model-download.sh /workspace/model-download.sh
+RUN cd /workspace/stable-diffusion-webui && \
+    cp ./model-download.sh /workspace/model-download.sh
+
 RUN chmod +x /workspace/model-download.sh
 
 SHELL ["/bin/bash", "--login", "-c"]
