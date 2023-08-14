@@ -1,6 +1,6 @@
 #!/bin/bash
 
-git pull origin master /workspace/stable-diffusion-webui
+git pull origin main /workspace/stable-diffusion-webui
 #echo "Calling model-download.sh"
 #/workspace/model-download.sh
 #echo "Successfully run scripts in model-download.sh"
