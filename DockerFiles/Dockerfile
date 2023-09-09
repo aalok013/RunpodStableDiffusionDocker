@@ -61,12 +61,19 @@ RUN cd /workspace/stable-diffusion-webui && \
     pip install -r requirements.txt
 
 RUN cd /workspace/stable-diffusion-webui && \
-    git clone https://github.com/thomasasfk/sd-webui-aspect-ratio-helper.git extensions/sd-webui-aspect-ratio-helper && \
-    cd extensions/sd-webui-aspect-ratio-helper
+    git clone https://github.com/thomasasfk/sd-webui-aspect-ratio-helper.git extensions/sd-webui-aspect-ratio-helper
 
 RUN cd /workspace/stable-diffusion-webui && \
-    git clone https://github.com/DominikDoom/a1111-sd-webui-tagcomplete.git extensions/a1111-sd-webui-tagcomplete.git && \
-    cd extensions/a1111-sd-webui-tagcomplete.git
+    git clone https://github.com/DominikDoom/a1111-sd-webui-tagcomplete.git extensions/a1111-sd-webui-tagcomplete.git
+
+RUN cd /workspace/stable-diffusion-webui && \
+    git clone https://github.com/AlUlkesh/stable-diffusion-webui-images-browser.git extensions/stable-diffusion-webui-images-browser.git
+
+RUN cd /workspace/stable-diffusion-webui && \
+    git clone https://github.com/aalok013/sd-webui-faceswaplab.git extensions/sd-webui-faceswaplab && \
+    cd extensions/sd-webui-faceswaplab && \
+    pip install -r requirements-gpu.txt
+
 
 # Uncomment and customize the following lines as needed
 # RUN cd /workspace/stable-diffusion-webui && \
